@@ -1,0 +1,10 @@
+{
+  "blogs": [
+    {
+      "name": "ijailbreakllms",
+      "url": "https://ijailbreakllms.vercel.app",
+      "archive_dir": "docs/research/blogs/ijailbreakllms",
+      "description": "IjailbreakLLMs - Spiritual Spell (Vichaps) AI jailbreaking research"
+    }
+  ]
+}

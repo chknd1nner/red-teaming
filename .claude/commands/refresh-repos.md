@@ -1,0 +1,1 @@
+Pull the latest from each of the repos listed in 'docs/research/repos/repo-list.md' and put them in 'docs/research/repos', overwriting anything already there if it already exists.
