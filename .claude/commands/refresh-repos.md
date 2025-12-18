@@ -1,1 +1,5 @@
-Pull the latest from each of the repos listed in 'docs/research/repos/repo-list.md' and put them in 'docs/research/repos', overwriting anything already there if it already exists.
+Refresh the research repositories by executing the refresh-repos skill.
+
+Run `bash .claude/skills/refresh-repos/scripts/refresh-repos.sh` to clone new repositories and pull updates for existing ones listed in `docs/research/repos/repo-list.md`. Repositories marked with strikethrough (~~url~~) will be skipped.
+
+After running, provide a summary of what was cloned, updated, skipped, or failed.
