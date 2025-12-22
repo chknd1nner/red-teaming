@@ -10,16 +10,16 @@ Automates discovery and tracking of new blog posts from red-teaming and AI secur
 ## Variables
 
 ```
-BLOG_CONFIG_PATH: scripts/blog-monitor-config.json (configuration file listing blogs to monitor)
+BLOG_CONFIG_PATH: .claude/skills/monitor-blogs/blog-monitor-config.json (configuration file listing blogs to monitor)
 ARCHIVE_BASE_DIR: docs/research/blogs/ (base directory for archived blog posts)
 AUTO_ARCHIVE: false (whether to automatically archive new posts or just report them)
 ```
 
 ## Instructions
 
-1. **Using the monitoring script**: Execute `scripts/monitor-blogs.sh` to check all configured blogs for new posts. The script compares current blog content against manifest files (`.manifest.json`) in each blog's archive directory.
+1. **Using the monitoring script**: Execute `.claude/skills/monitor-blogs/scripts/monitor-blogs.sh` to check all configured blogs for new posts. The script compares current blog content against manifest files (`.manifest.json`) in each blog's archive directory.
 
-2. **Configuration file**: Read `scripts/blog-monitor-config.json` to see which blogs are being monitored or to add new blogs.
+2. **Configuration file**: Read `.claude/skills/monitor-blogs/blog-monitor-config.json` to see which blogs are being monitored or to add new blogs.
 
 3. **Manifest files**: Each monitored blog has a `.manifest.json` file in its archive directory (e.g., `docs/research/blogs/ijailbreakllms/.manifest.json`) that tracks discovered and archived posts.
 

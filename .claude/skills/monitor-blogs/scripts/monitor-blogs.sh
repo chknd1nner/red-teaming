@@ -15,9 +15,9 @@ NC='\033[0m' # No Color
 
 # Get the script directory and project root
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/../../../.." && pwd )"
 
-CONFIG_FILE="$PROJECT_ROOT/scripts/blog-monitor-config.json"
+CONFIG_FILE="$PROJECT_ROOT/.claude/skills/monitor-blogs/blog-monitor-config.json"
 
 # Check if config file exists
 if [ ! -f "$CONFIG_FILE" ]; then

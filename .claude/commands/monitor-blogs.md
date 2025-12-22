@@ -1,13 +1,5 @@
----
-description: Check research blogs for new posts
-allowed-tools: Bash(scripts/monitor-blogs.sh)
----
+Check research blogs for new posts using the monitor-blogs skill.
 
-Execute the blog monitoring script to check for new posts from configured research blogs.
+Run `bash .claude/skills/monitor-blogs/scripts/monitor-blogs.sh` to check all configured blogs for new posts. The script compares current blog content against manifest files in each blog's archive directory.
 
-Run: !`bash scripts/monitor-blogs.sh`
-
-After running, review any new posts reported. If you find posts worth archiving:
-1. Use WebFetch to retrieve the post content
-2. Use Write to save it to the appropriate blog directory (follow naming convention: YYYY-MM-DD-slug.md)
-3. Update the blog's .manifest.json to include the new post
+After running, review any new posts reported. If you find posts worth archiving, use WebFetch to retrieve the content, save to the appropriate blog directory (YYYY-MM-DD-slug.md), and update the blog's .manifest.json.
