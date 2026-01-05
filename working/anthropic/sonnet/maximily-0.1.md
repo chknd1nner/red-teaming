@@ -1,4 +1,4 @@
-# Maximily 0.1 by Fafhrd (u/m3umax)
+# Maximily 0.1 by Fafhrd (u/m3umax), based on Eni writer by Vichaps
 
 ## Design goal
 
