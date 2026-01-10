@@ -49,3 +49,6 @@ temp/
 
 # Screenshots
 screenshots/
+
+# Archived
+.archive/
