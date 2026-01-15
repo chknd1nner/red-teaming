@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoRA Training Image Prep</title>
+    <meta name="description" content="Prepare images for LoRA training - crop, resize, and caption your training dataset">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🎨</span>
+                <h1>LoRA Prep</h1>
+            </div>
+            <div class="header-controls">
+                <div class="model-select-container">
+                    <label for="targetModel">Target Model:</label>
+                    <select id="targetModel">
+                        <option value="512">SD 1.5 (512×512)</option>
+                        <option value="768">SD 2.1 (768×768)</option>
+                        <option value="1024" selected>SDXL / Flux (1024×1024)</option>
+                    </select>
+                </div>
+                <button id="exportBtn" class="btn btn-primary" disabled>
+                    <span class="btn-icon">📦</span>
+                    Export ZIP
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Filmstrip Sidebar -->
+            <aside class="filmstrip" id="filmstrip">
+                <div class="filmstrip-header">
+                    <span class="image-count" id="imageCount">0 images</span>
+                </div>
+                <div class="filmstrip-scroll" id="filmstripScroll">
+                    <!-- Thumbnails will be added here -->
+                </div>
+            </aside>
+
+            <!-- Editor Area -->
+            <section class="editor-area" id="editorArea">
+                <!-- Drop Zone (shown when no images) -->
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-content">
+                        <div class="drop-icon">📁</div>
+                        <h2>Drop images here</h2>
+                        <p>or click to select files</p>
+                        <p class="drop-hint">Supports JPG, PNG, WEBP</p>
+                    </div>
+                    <input type="file" id="fileInput" multiple accept="image/jpeg,image/png,image/webp,.txt" hidden>
+                </div>
+
+                <!-- Crop Editor (shown when image selected) -->
+                <div class="crop-editor hidden" id="cropEditor">
+                    <div class="crop-container" id="cropContainer">
+                        <canvas id="cropCanvas"></canvas>
+                        <div class="crop-overlay" id="cropOverlay">
+                            <div class="crop-box" id="cropBox">
+                                <div class="crop-corner top-left"></div>
+                                <div class="crop-corner top-right"></div>
+                                <div class="crop-corner bottom-left"></div>
+                                <div class="crop-corner bottom-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crop-controls">
+                        <div class="zoom-controls">
+                            <button class="btn btn-icon-only" id="zoomOut" title="Zoom Out">−</button>
+                            <span class="zoom-label" id="zoomLabel">100%</span>
+                            <button class="btn btn-icon-only" id="zoomIn" title="Zoom In">+</button>
+                        </div>
+                        <div class="crop-info">
+                            <span id="cropSize">1024 × 1024</span>
+                        </div>
+                    </div>
+                    <div class="caption-area">
+                        <label for="captionInput">Caption:</label>
+                        <textarea id="captionInput" placeholder="Enter a caption for this image..."></textarea>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer with thumbnail slider -->
+        <footer class="app-footer">
+            <div class="thumbnail-size-control">
+                <label for="thumbnailSlider">Thumbnail Size:</label>
+                <input type="range" id="thumbnailSlider" min="60" max="200" value="100">
+            </div>
+            <div class="export-options">
+                <label>Caption Format:</label>
+                <select id="captionFormat">
+                    <option value="individual">Individual .txt files</option>
+                    <option value="single">Single captions.txt</option>
+                </select>
+            </div>
+        </footer>
+
+        <!-- Export Modal -->
+        <div class="modal hidden" id="exportModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Exporting...</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Processing images...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
