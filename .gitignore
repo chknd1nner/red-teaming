@@ -52,3 +52,6 @@ screenshots/
 
 # Archived
 .archive/
+
+# Images
+/image-gen/training/
